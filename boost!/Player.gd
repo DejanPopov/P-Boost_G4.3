@@ -1,13 +1,12 @@
 extends Node3D
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	print("Hello World!")
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	# ui_accept is for Enter or Space bar
-	if Input.is_action_just_pressed("ui_accept"):
-		print("Spacebar or Enter is pressed")
+
+	if Input.is_action_pressed("ui_accept"): # ui_accept is for Enter or Space bar
+		position.y += delta #Player moves each frame as long as space button is hold
+
+	if Input.is_action_pressed("ui_left"):
+		rotate_z(delta) # If key A is pressed rotate left
+		
+	if Input.is_action_pressed("ui_right"):
+		rotate_z(-delta) # If key D is pressed rotate right
